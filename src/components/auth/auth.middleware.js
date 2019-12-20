@@ -19,5 +19,13 @@ module.exports = {
 
         res.locals = { user }
         return next()
+    },
+
+    async hasCookieJwt({ headers: { cookie } }, res, next) {
+        if (/jwt/.test(cookie)) {
+            return next()
+        }
+
+        return res.sendStatus(422)
     }
 }
