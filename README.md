@@ -12,9 +12,8 @@
 - Returns user info.
 
 ## Setup and test
-- Make sure you have Node.js and Docker installed in your machine.
-
-- ### Run then run the following commands:
+- Make sure you have [**Node.js**](https://nodejs.org/en/) and [**Docker**](https://www.docker.com/) installed in your machine.
+- ### Run the following commands:
   - Setup packages and .env file: `npm install` and `cp .env.example .env`
   - Build and run database: `docker-compose up -d`
   - Run WebServer in developer mode: `npm run dev`
