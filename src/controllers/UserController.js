@@ -6,7 +6,10 @@ module.exports = {
             await User.create(body)
             return res.sendStatus(201)
         } catch (error) {
-            return res.sendStatus(422)
+            return res.status(422).json({ 
+                message: "Invalid JSON format.",
+                cause: error 
+            })
         }
     }
 }

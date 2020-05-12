@@ -12,12 +12,15 @@ module.exports = {
         user.password = undefined
 
         if (!match) {
-            return res.sendStatus(401)
+            return res.status(401).json({ message: "Please type a valid password." })
         }
 
-        jwt.sign({ _id }, SECRET_KEY, { expiresIn: '1d' }, (err, token) => {
-            if (err) {
-                return res.sendStatus(500)
+        jwt.sign({ _id }, SECRET_KEY, { expiresIn: '1d' }, (error, token) => {
+            if (error) {
+                return res.status(500).json({ 
+                    message: "Invalid token.", 
+                    cause: error
+                })
             }
 
             setJwtCookie(res, token)
@@ -31,9 +34,12 @@ module.exports = {
         const userInfo = await User.findOne({ _id })
         userInfo.password = undefined
         
-        jwt.sign({ _id }, SECRET_KEY, { expiresIn: '1d' }, (err, newToken) => {
-            if (err) {
-                return res.status(500).json({ cause: err })
+        jwt.sign({ _id }, SECRET_KEY, { expiresIn: '1d' }, (error, newToken) => {
+            if (error) {
+                return res.status(500).json({ 
+                    message: "Invalid token.",
+                    cause: error 
+                })
             }
 
             setJwtCookie(res, newToken)

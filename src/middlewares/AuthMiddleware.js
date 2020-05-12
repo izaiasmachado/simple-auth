@@ -3,7 +3,7 @@ const User = require('../models/User')
 module.exports = {
     async hasBody({ body }, res, next) {
         if (!body) {
-            return res.sendStatus(422)
+            return res.status(422).json({ message: "Missing body request." })
         }
 
         return next()
@@ -14,7 +14,7 @@ module.exports = {
         const user = await User.findOne({ email })
 
         if (!user) {
-            return res.sendStatus(422)
+            return res.status(422).json({ message: "Couldn't find this user." })
         }
 
         res.locals = { user }
@@ -26,6 +26,6 @@ module.exports = {
             return next()
         }
 
-        return res.sendStatus(422)
+        return res.status(422).json({ message: "Couldn't find cookie." })
     }
 }

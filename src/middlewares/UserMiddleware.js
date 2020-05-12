@@ -6,7 +6,7 @@ module.exports = {
         const userExists = await User.findOne({ email })
         
         if (userExists) {
-            return res.sendStatus(409)
+            return res.status(409).json({ message: "User alredy exists." })
         }
 
         return next()
