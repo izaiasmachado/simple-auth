@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose')
 const bcrypt = require('bcryptjs')
+
 const { SALT_ROUNDS } = process.env
 
 const UserSchema = new Schema({

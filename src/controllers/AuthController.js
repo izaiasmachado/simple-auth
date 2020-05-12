@@ -1,7 +1,7 @@
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
-const User = require('../user/user.model')
+const User = require('../models/User')
 const { SECRET_KEY, COOKIE_OPTIONS } = process.env
 
 module.exports = {

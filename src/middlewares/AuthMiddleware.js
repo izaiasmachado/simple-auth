@@ -1,4 +1,4 @@
-const User = require('../user/user.model')
+const User = require('../models/User')
 
 module.exports = {
     async hasBody({ body }, res, next) {
