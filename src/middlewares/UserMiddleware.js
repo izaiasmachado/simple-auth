@@ -1,4 +1,4 @@
-const User = require('./user.model')
+const User = require('../models/User')
 
 module.exports = {
     async userExists({ body }, res, next) {
@@ -6,7 +6,7 @@ module.exports = {
         const userExists = await User.findOne({ email })
         
         if (userExists) {
-            return res.sendStatus(409)
+            return res.status(409).json({ message: "User alredy exists." })
         }
 
         return next()
